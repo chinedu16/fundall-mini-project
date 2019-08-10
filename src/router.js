@@ -15,14 +15,6 @@ const ifAuthenticated = (to, from, next) => {
   next('/')
 }
 
-const ifLogged = (to, from, next) => {
-  let loggedIn = localStorage.getItem('USER_TOKEN')
-  if (loggedIn) {
-    next()
-    return
-  }
-  next('/dashboard')
-}
 
 export default new Router({
   mode: 'history',
@@ -33,7 +25,7 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home,
-      beforeEnter: ifLogged
+      // beforeEnter: ifLogged
     },
     {
       path: '/about',
