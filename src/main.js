@@ -2,8 +2,22 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import swal from 'sweetalert'
+import { VueSpinners } from '@saeris/vue-spinners'
 
 Vue.config.productionTip = false
+Vue.use(VueSpinners)
+Vue.use({
+  install (Vue) {
+    Vue.swal = swal
+    Vue.prototype.$swal = swal
+  }
+})
+
+Vue.filter('toCurrency', function (value) {
+  let val = (value / 1).toFixed(0).replace('.', ',')
+  return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+})
 
 new Vue({
   router,
