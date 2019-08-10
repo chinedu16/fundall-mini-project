@@ -23,30 +23,30 @@
             <div class="double">
             <div class="form-control">
               <label for="">First Name</label>
-              <input type="text" v-model="payload.firstname" placeholder="Enter First Name">
+              <input type="text" v-model="payload.firstname" placeholder="Enter First Name" required>
             </div>
             <div class="form-control last">
               <label for="">Last Name</label>
-              <input type="text" v-model="payload.lastname" placeholder="Enter Last Name">
+              <input type="text" v-model="payload.lastname" placeholder="Enter Last Name" required>
             </div>
           </div>
 
             <div class="single">
               <div class="form-control">
                 <label for="">Email Address</label>
-                <input type="text" v-model="payload.email" placeholder="Enter Email">
+                <input type="text" v-model="payload.email" placeholder="Enter Email" required>
               </div>
             </div>
             <div class="single">
               <div class="form-control">
                 <label for="">Password</label>
-                <input type="password" v-model="payload.password" placeholder="Enter Password">
+                <input type="password" v-model="payload.password" placeholder="Enter Password" required>
               </div>
             </div>
             <div class="single">
               <div class="form-control">
                 <label for="">Confirm Password</label>
-                <input type="password" v-model="payload.password_confirmation" placeholder="Confirm Password">
+                <input type="password" v-model="payload.password_confirmation" placeholder="Confirm Password" required>
               </div>
             </div>
             <div class="single">

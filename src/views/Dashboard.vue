@@ -31,7 +31,7 @@
             <div class="amount">₦ {{userInfo.monthly_target | toCurrency}}</div>
 
             <div class="progress">
-
+              <progress-bar style="background: #4DE897;" size="medium" bar-color="#4DE897" max='2000000' :val='userInfo.monthly_target' ></progress-bar>
             </div>
           </div>
 
@@ -142,11 +142,13 @@
 import api from '../api/index.js'
 import swal from 'sweetalert'
 import { ClipLoader } from '@saeris/vue-spinners'
-import axios from 'axios'
+import ProgressBar from 'vue-simple-progress'
+
 export default {
   name: 'dashboard',
   components: {
-    ClipLoader
+    ClipLoader,
+    ProgressBar
   },
   data () {
     return {
@@ -165,7 +167,7 @@ export default {
       payload: {
         'monthly_target': ''
       },
-      payload2: '',
+      payload2: {},
       empty: true
     }
   },
@@ -189,11 +191,8 @@ export default {
       }
     },
     addExpenses: async function () {
-      // https://cdn2.iconfinder.com/data/icons/avatar-colorize-i/100/people_character_avatar_smile_1-16-512.png
       this.loading = true
-      if (this.payload.monthly_target == '') {
-        this.payload.monthly_target = this.temp
-      }
+      if (this.payload.monthly_target == '') { this.payload.monthly_target = this.temp }
       const res = await api.updateTarget(this.payload, this.token)
       if (res) { this.getProfile() }
       if (this.date == '' ) { swal('Missing', 'Some forms are empty', 'info', {button: 'Continue'}), this.loading = false}
@@ -215,13 +214,14 @@ export default {
     },
     onFileChanged: async function (event) {
       let file = event.target.files[0]
-      const response = await axios.post(`https://test.fundall.io/api/v1/base/avatar`, {avatar: file }, {
-        headers: {
-          'Authorization': `Bearer ${this.token}`,
-          'Content-Type': 'multipart/form-data'
-        }
-      })
-      console.log(response)
+      let payload = { 'avatar': file }
+      try {
+        await api.updateAvatar(payload, this.token)
+      } catch (error) {
+        swal('Error', 'error', 'error', {
+          button: 'Try again'
+        })
+      }
     },
     prev: async function (url) {
       console.log(url)

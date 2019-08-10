@@ -4,6 +4,9 @@ import router from './router'
 import store from './store'
 import swal from 'sweetalert'
 import { VueSpinners } from '@saeris/vue-spinners'
+import ProgressBar from 'vue-simple-progress'
+
+Vue.use(ProgressBar)
 
 Vue.config.productionTip = false
 Vue.use(VueSpinners)

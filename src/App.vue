@@ -85,9 +85,9 @@ body {
       }
       .progress {
         margin-top: 17px;
-        background: #4DE897;
-        border-radius: 10px;
-        height: 7px;
+        // background: #4DE897;
+        // border-radius: 10px;
+        // height: 7px;
       }
     }
 

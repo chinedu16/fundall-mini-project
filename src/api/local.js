@@ -10,11 +10,6 @@ function saveData (userDetails) {
   axios.defaults.headers.common['Authorization'] = `bearer ${userDetails.access_token}` ;
 }
 
-// function getData (data) {
-  
-// }
-
 export default {
-  saveData,
-  // getData
+  saveData
 }
