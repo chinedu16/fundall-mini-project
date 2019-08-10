@@ -23,16 +23,22 @@ body {
   padding: 0px 51px 37px 50px;
 
   .welcome {
+    min-width: 330px;
     .message {
       display: flex;
       // justify-content: space-between;
       margin-top: -23px;
 
       .logo {
-        width: 100px;
-        // height: 95px;
-        background: #C4C4C4;
-        border-radius: 28px;
+        input {
+          opacity: 0;
+          height: 95px;
+          width: 8%;
+          margin-left: -100px;
+          position: absolute;
+          z-index: 6;
+          cursor: pointer;
+        }
       }
 
       .user {
@@ -52,11 +58,13 @@ body {
       
     }
     img {
-      position: relative;
-      top: 30%;
-      display: block;
-      margin-left: auto;
-      margin-right: auto
+      height: 96px;
+      border-radius: 28px;
+      // position: relative;
+      // top: 30%;
+      // display: block;
+      // margin-left: auto;
+      // margin-right: auto
     }
 
     .sub_message {
@@ -149,7 +157,7 @@ body {
     .item-1 {
       // width: 590px;
       padding: 20px 30px;
-      margin-top: -70px;
+      margin-top: -20px;
       background: #F2F3F7;
       box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.082937);
       border-radius: 6px;
@@ -238,6 +246,8 @@ body {
     .btn {
       text-align: center;
       margin: 35px 0px 0px;
+      display: flex;
+      justify-content: center;
       button {
         background: #4DE897;
         border: 2px solid #FFFFFF;
@@ -456,6 +466,9 @@ body {
     .single {
       margin-top: 25px;
       
+      .error{
+        text-align: center;
+      }
       .form-control {
         input {
           width: 100%;
@@ -536,6 +549,25 @@ body {
     }
   }
   .settings {
+    button {
+      text-transform: uppercase;
+      cursor: pointer;
+      font-size: 18px;
+      line-height: 23px;
+      padding: 10px;
+      font-weight: 600;
+      color: #000000;
+      border-radius: 10px;
+      background: #4CE895;
+      border-color: #4CE895;
+      margin-left: 23px;
+      &:hover {
+        color: white;
+      }
+      &:focus , &:active {
+        outline: none;
+      }
+    }
     a {
       button {
         text-transform: uppercase;
