@@ -6,38 +6,45 @@ import Register from './views/Register.vue'
 import Dashboard from './views/Dashboard.vue'
 
 Vue.use(Router)
+const ifAuthenticated = (to, from, next) => {
+  let loggedIn = localStorage.getItem('USER_TOKEN')
+  if (loggedIn) {
+    next()
+    return
+  }
+  next('/')
+}
 
 export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
+
   routes: [
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: Home,
     },
     {
       path: '/about',
       name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+      component: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
     },
     {
       path: '/login',
       name: 'login',
-      component: Login
+      component: Login,
     },
     {
       path: '/register',
       name: 'resgister',
-      component: Register
+      component: Register,
     },
     {
       path: '/dashboard',
       name: 'dashboard',
-      component: Dashboard
+      component: Dashboard,
+      beforeEnter: ifAuthenticated
     }
   ]
 })
