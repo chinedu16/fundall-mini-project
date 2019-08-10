@@ -25,19 +25,24 @@
             <div class="single">
               <div class="form-control">
                 <label for="">Email or Username</label>
-                <input type="text" name="" id="" placeholder="Enter Email or Username">
+                <input type="text" v-model="payload.email" placeholder="Enter Email or Username">
               </div>
             </div>
             <div class="single">
               <div class="form-control">
                 <label for="">Password</label>
-                <input type="text" name="" id="" placeholder="Enter Password">
+                <input type="text" v-model="payload.password" placeholder="Enter Password">
               </div>
             </div>
             
             <div class="single">
               <div class="form-control">
-                <button @click="toDashboard"> Login </button>
+                <button @click="login"> Login </button>
+              </div>
+            </div>
+            <div class="single" v-if="loading">
+              <div class="error">
+                <clip-loader class="custom-class" :color="color" :loading="loading" ></clip-loader>
               </div>
             </div>
 
@@ -58,17 +63,50 @@
 </template>
 
 <script>
-// @ is an alias to /src
-// import HelloWorld from '@/components/HelloWorld.vue'
+import api from '../api/index.js'
+import local from '../api/local.js'
+import swal from 'sweetalert'
+import { ClipLoader } from '@saeris/vue-spinners'
 
 export default {
   name: 'login',
+  components: {
+    ClipLoader
+  },
+  data () {
+    return {
+      color: '#4DE897',
+      loading: false,
+      payload: {
+        email: 'test@gmail.com',
+        password: '123456',
+      }
+    }
+  },
   methods: {
     goToRegister: function () {
       this.$router.push('/register')
     },
     toDashboard: function () {
       this.$router.push('/dashboard')
+    },
+    login: async function () {
+      try {
+        this.loading = true
+        const response = await api.logIn(this.payload)
+        const userDetails = response.data.success.user
+        local.saveData(userDetails)
+        if (response) {
+          this.loading = false
+          this.$router.push('/dashboard')
+        }
+      } catch (error) {
+        this.loading = true
+        swal('Error', "Something went wrong", 'error', {
+          button: 'Try again'
+        })
+        this.loading = false
+      }
     }
   }
 }

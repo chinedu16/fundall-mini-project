@@ -23,35 +23,40 @@
             <div class="double">
             <div class="form-control">
               <label for="">First Name</label>
-              <input type="text" name="" id="" placeholder="Enter First Name">
+              <input type="text" v-model="payload.firstname" placeholder="Enter First Name">
             </div>
             <div class="form-control last">
               <label for="">Last Name</label>
-              <input type="text" name="" id="" placeholder="Enter Last Name">
+              <input type="text" v-model="payload.lastname" placeholder="Enter Last Name">
             </div>
           </div>
 
             <div class="single">
               <div class="form-control">
                 <label for="">Email Address</label>
-                <input type="text" name="" id="" placeholder="Enter Email">
+                <input type="text" v-model="payload.email" placeholder="Enter Email">
               </div>
             </div>
             <div class="single">
               <div class="form-control">
                 <label for="">Password</label>
-                <input type="text" name="" id="" placeholder="Enter Password">
+                <input type="password" v-model="payload.password" placeholder="Enter Password">
               </div>
             </div>
             <div class="single">
               <div class="form-control">
                 <label for="">Confirm Password</label>
-                <input type="text" name="" id="" placeholder="Confirm Password">
+                <input type="password" v-model="payload.password_confirmation" placeholder="Confirm Password">
               </div>
             </div>
             <div class="single">
               <div class="form-control">
-                <button @click="toDashboard"> Sign up </button>
+                <button @click="register"> Sign up </button>
+              </div>
+            </div>
+            <div class="single" v-if="loading">
+              <div class="error">
+                <clip-loader class="custom-class" :color="color" :loading="loading" ></clip-loader>
               </div>
             </div>
 
@@ -70,17 +75,53 @@
 </template>
 
 <script>
-// @ is an alias to /src
-// import HelloWorld from '@/components/HelloWorld.vue'
-
+import api from '../api/index.js'
+import swal from 'sweetalert'
+import { ClipLoader } from '@saeris/vue-spinners'
 export default {
   name: 'register',
+  components: {
+    ClipLoader
+  },
+  data () {
+    return {
+      color: '#4DE897',
+      loading: false,
+      payload: {
+        firstname: '',
+        lastname: '',
+        email: '',
+        password: '',
+        password_confirmation: '',
+      }
+    }
+  },
   methods: {
     goToLogin: function () {
       this.$router.push('/login')
     },
     toDashboard: function () {
       this.$router.push('/dashboard')
+    },
+    register: async function () {
+      try {
+        this.loading = true
+        const response = await api.register(this.payload)
+        console.log(response)
+        if (response) {
+          this.loading = false
+          swal('Registered', 'User registeration went well', 'success', {
+            button: 'Great'
+          })
+          this.$router.push('/login')
+        }
+      } catch (error) {
+        this.loading = true
+        swal('Error', "Something went wrong", 'error', {
+          button: 'Try again'
+        })
+        this.loading = false
+      }
     }
   }
 }
