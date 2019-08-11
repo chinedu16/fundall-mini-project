@@ -359,6 +359,30 @@ body {
   }
 }
 
+@media screen and (max-width: 600px) {
+  .main .dashboard_content {
+    padding: 0px;
+    display: grid;
+
+    .welcome {
+      width: 100%;
+    }
+    .form-container {
+      margin-top: 100px;
+
+      .item-1 {
+        padding: 10px 10px;
+        width: 100%;
+        .welcomeboard {
+          display: none;
+        }
+        .double .last {
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+}
 
 
 
@@ -538,6 +562,9 @@ body {
       .item-1 {
         padding: 10px 10px;
         width: 90%;
+        .double .last {
+          margin-left: 5px;
+        }
       }
     }
   }
