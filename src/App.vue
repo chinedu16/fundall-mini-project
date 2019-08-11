@@ -328,15 +328,6 @@ body {
       }
     }
 
-    .mid-1 {
-
-    }
-    .mid-2 {
-
-    }
-    .mid-3 {
-
-    }
     .form-control {
       label {
         font-size: 14px;
@@ -367,6 +358,10 @@ body {
     }
   }
 }
+
+
+
+
 
 .content {
   display: flex;
@@ -532,6 +527,23 @@ body {
   }
 }
 
+@media screen and (max-width: 600px) {
+  .main .content {
+    padding: 0px;
+    display: grid;
+
+    .form-container {
+      margin-top: 100px;
+
+      .item-1 {
+        padding: 10px 10px;
+        width: 90%;
+      }
+    }
+  }
+}
+
+
 .header-container{
   // padding: 35px 89px;
   padding: 20px 60px 50px 60px;
@@ -604,6 +616,11 @@ body {
         }
       }
     }
+  }
+}
+@media screen and (max-width: 400px) {
+  .header-container .settings {
+    display: inline-flex;
   }
 }
 
