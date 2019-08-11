@@ -650,9 +650,12 @@ body {
     }
   }
 }
-@media screen and (max-width: 400px) {
-  .header-container .settings {
-    display: inline-flex;
+@media screen and (max-width: 600px) {
+  .header-container {
+    padding: 14px 14px 60px 14px;
+    .settings {
+      margin-top: 10px;
+    }
   }
 }
 
