@@ -556,6 +556,11 @@ body {
     padding: 0px;
     display: grid;
 
+    .welcome {
+      img {
+        display: none;
+      }
+    }
     .form-container {
       margin-top: 100px;
 
