@@ -47,7 +47,7 @@
                 </tr> 
                 <tr v-for="data in userExpense.data" :key="data.id">
                   <td><i class="fas fa-circle"></i></td> 
-                  <td>{{data.date}}</td> 
+                  <td>{{data.date | moment("MMMM Do YYYY") }}</td> 
                   <td>₦{{data.price}}</td> 
                 </tr>
               </table>
@@ -87,6 +87,7 @@
               <div class="single">
                 <div class="form-control">
                   <label for="">Date</label>
+                  <!-- <datepicker v-model="date" name="uniquename"></datepicker> -->
                   <input type="text" v-model="date" placeholder="08/08/2019">
                 </div>
               </div>
@@ -241,11 +242,8 @@ export default {
       this.initialData2.date = this.date
       this.initialData1.date = this.date
     },
-    initialData3: {
-      handler (newVal) {
-        this.actualTotal = newVal.initialData1.amount + newVal.initialData2.amount + newVal.initialData3.amount
-      },
-      deep: true
+    initialData3: function () {
+        this.actualTotal = this.initialData1.amount  + this.initialData2.amount + this.initialData3.amount;
     }
   }
 }

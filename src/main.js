@@ -6,6 +6,7 @@ import swal from 'sweetalert'
 import { VueSpinners } from '@saeris/vue-spinners'
 import ProgressBar from 'vue-simple-progress'
 
+Vue.use(require('vue-moment'));
 Vue.use(ProgressBar)
 
 Vue.config.productionTip = false
