@@ -384,6 +384,12 @@ body {
   }
 }
 
+@media screen and (min-width: 2000px) {
+  .main .dashboard_content {
+    justify-content: space-evenly;
+  }
+}
+
 
 
 
@@ -578,6 +584,12 @@ body {
         }
       }
     }
+  }
+}
+
+@media screen and (min-width: 2000px) {
+  .main .content {
+    justify-content: space-evenly;
   }
 }
 
