@@ -359,7 +359,7 @@ body {
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 499px) {
   .main .dashboard_content {
     padding: 0px;
     display: grid;
@@ -384,14 +384,14 @@ body {
   }
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (min-width: 500px) and (max-width: 1170px) {
   .main .dashboard_content {
     display: grid;
     grid-gap: 50px;
   }
 }
 
-@media screen and (min-width: 2000px) {
+@media screen and (min-width: 1400px) {
   .main .dashboard_content {
     justify-content: space-evenly;
   }
@@ -564,7 +564,7 @@ body {
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 450px) {
   .main .content {
     padding: 0px;
     display: grid;
@@ -594,13 +594,13 @@ body {
   }
 }
 
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 450px) and (max-width: 750px) {
   .main .content {
     display: grid;
     grid-gap: 50px;
-
+    padding: 0;
     .welcome {
-      display: none;
+      text-align: center;
     }
     .form-container {
       .item-1 {
@@ -610,7 +610,7 @@ body {
   }
 }
 
-@media screen and (min-width: 2000px) {
+@media screen and (min-width: 1400px) {
   .main .content {
     justify-content: space-evenly;
   }
