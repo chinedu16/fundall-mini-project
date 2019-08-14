@@ -384,6 +384,19 @@ body {
   }
 }
 
+@media screen and (max-width: 750px) {
+  .main .dashboard_content {
+    display: grid;
+    grid-gap: 50px;
+  }
+}
+
+@media screen and (min-width: 2000px) {
+  .main .dashboard_content {
+    justify-content: space-evenly;
+  }
+}
+
 
 
 
@@ -578,6 +591,28 @@ body {
         }
       }
     }
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .main .content {
+    display: grid;
+    grid-gap: 50px;
+
+    .welcome {
+      display: none;
+    }
+    .form-container {
+      .item-1 {
+        margin: 0;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 2000px) {
+  .main .content {
+    justify-content: space-evenly;
   }
 }
 
